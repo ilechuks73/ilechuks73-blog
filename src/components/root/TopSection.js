@@ -25,7 +25,7 @@ export default function TopSection() {
             <MuiButton
               disabled={true}
               className={
-                "!text-black !rounded-none !border-l !border-l-black border-solid !font-poppins"
+                "!text-black !rounded-none !border-l !border-l-black !border-solid !font-poppins"
               }
             >
               {"Blog"}
