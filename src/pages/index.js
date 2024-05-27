@@ -12,8 +12,8 @@ export default function Root() {
   return (
     <>
       <Head>
-        <title>Ilechukwu Joshua</title>
-        <meta name="description" content="Software Engineer" />
+        <title>Blog</title>
+        <meta name="description" content="The software engineer blog" />
         {/*<script*/}
         {/*  src="https://apis.google.com/js/platform.js"*/}
         {/*  async*/}
