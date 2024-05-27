@@ -1,9 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Button as MuiButton } from "@mui/material";
+import { useState } from "react";
+import { Button as MuiButton, TextField as MuiTextField } from "@mui/material";
 import { MdOutlineWavingHand } from "react-icons/md";
+import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { GoArrowUpRight } from "react-icons/go";
+import { useReCaptcha } from "next-recaptcha-v3";
+import validator from "validator";
 
 export default function TopSection() {
+  const [form, setForm] = useState({ emailAddress: "" });
+  const [hasError, setHasError] = useState([false]);
   return (
     <div className={""}>
       <div className={"font-roboto max-w-[1000px] mx-4 md:mx-10 lg:mx-auto"}>
@@ -43,13 +49,41 @@ export default function TopSection() {
               been working on. If you'd like to collaborate or just have a chat,
               don't hesitate to reach out!
             </p>
+            <MuiTextField
+              error={hasError[0]}
+              size={"small"}
+              variant={"outlined"}
+              className={"!w-full !mt-3"}
+              placeholder={"Your email address"}
+              value={form.emailAddress || ""}
+              onChange={(e) =>
+                setForm({ ...form, emailAddress: e.target.value })
+              }
+            />
             <div className={"mt-8"}>
               <MuiButton
                 variant={"contained"}
                 className={"!bg-black !text-white"}
-                endIcon={<MdOutlineWavingHand />}
+                endIcon={<dOutlineMarkEmailRead />}
+                onClick={async (event) => {
+                  setHasError((hasError) => {
+                    hasError[0] = false;
+                    return [...hasError];
+                  });
+                  if (
+                    !form.emailAddress ||
+                    validator.isEmpty(form.emailAddress) === true ||
+                    validator.isEmail(form.emailAddress) === false
+                  ) {
+                    setHasError((hasError) => {
+                      hasError[0] = true;
+                      return [...hasError];
+                    });
+                    return false;
+                  }
+                }}
               >
-                Say Hello
+                Subscribe
               </MuiButton>
             </div>
           </div>
