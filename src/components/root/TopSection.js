@@ -64,7 +64,7 @@ export default function TopSection() {
               <MuiButton
                 variant={"contained"}
                 className={"!bg-black !text-white"}
-                endIcon={<dOutlineMarkEmailRead />}
+                endIcon={<MdOutlineMarkEmailRead />}
                 onClick={async (event) => {
                   setHasError((hasError) => {
                     hasError[0] = false;
