@@ -53,14 +53,14 @@ export default function TopSection() {
               error={hasError[0]}
               size={"small"}
               variant={"outlined"}
-              className={"!w-full !mt-3"}
+              className={"!w-full !mt-6"}
               placeholder={"Your email address"}
               value={form.emailAddress || ""}
               onChange={(e) =>
                 setForm({ ...form, emailAddress: e.target.value })
               }
             />
-            <div className={"mt-8"}>
+            <div className={"mt-4"}>
               <MuiButton
                 variant={"contained"}
                 className={"!bg-black !text-white"}

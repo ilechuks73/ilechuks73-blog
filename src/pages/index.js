@@ -6,6 +6,7 @@ import {
   Skills,
   WorkExperience,
   ViewSwitch,
+  Featured,
 } from "@/components/root";
 
 export default function Root() {
@@ -20,11 +21,11 @@ export default function Root() {
         {/*  defer*/}
         {/*></script>*/}
       </Head>
-
       <TopSection />
-      <Skills />
-      <WorkExperience />
-      <Contact />
+      <Featured />
+      {/*<Skills />*/}
+      {/*<WorkExperience />*/}
+      {/*<Contact />*/}
       <div className={"h-[300px] w-full bg-none"}></div>
       <ViewSwitch />
     </>
