@@ -6,6 +6,7 @@ import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { GoArrowUpRight } from "react-icons/go";
 import { useReCaptcha } from "next-recaptcha-v3";
 import validator from "validator";
+import Image from "next/image";
 
 export default function TopSection() {
   const [form, setForm] = useState({ emailAddress: "" });
@@ -14,7 +15,7 @@ export default function TopSection() {
     <div className={""}>
       <div className={"font-roboto max-w-[1000px] mx-4 md:mx-10 lg:mx-auto"}>
         <div className={"flex justify-between items-center py-3"}>
-          <img
+          <Image
             alt={"ilechuks73"}
             className={"h-[30px] md:h-[50px]"}
             src={
