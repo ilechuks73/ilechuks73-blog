@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Button as MuiButton } from "@mui/material";
 
-
 export default function Featured() {
   return (
     <div
@@ -21,7 +20,7 @@ export default function Featured() {
               key={index}
               className={"border border-gray-300 rounded-md p-2"}
             >
-              <Image
+              <img
                 className={"mb-5"}
                 src={
                   "https://res.cloudinary.com/geergregrgege/image/upload/v1716754334/assets/images/xsp4qwpdyc0j0s2805vf.png"
