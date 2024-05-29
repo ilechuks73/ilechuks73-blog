@@ -1,21 +1,6 @@
+import Image from "next/image";
 import { Button as MuiButton } from "@mui/material";
-import { IoLogoJavascript } from "react-icons/io5";
-import { IoLogoNodejs, IoLogoGithub } from "react-icons/io5";
-import {
-  SiRabbitmq,
-  SiAmazonaws,
-  SiLinux,
-  SiReact,
-  SiVuedotjs,
-  SiNextdotjs,
-  SiNuxtdotjs,
-  SiMysql,
-  SiPostgresql,
-  SiRedis,
-  SiHtml5,
-  SiCss3,
-  SiTailwindcss,
-} from "react-icons/si";
+
 
 export default function Featured() {
   return (
@@ -36,8 +21,8 @@ export default function Featured() {
               key={index}
               className={"border border-gray-300 rounded-md p-2"}
             >
-              <img
-                  className={"mb-5"}
+              <Image
+                className={"mb-5"}
                 src={
                   "https://res.cloudinary.com/geergregrgege/image/upload/v1716754334/assets/images/xsp4qwpdyc0j0s2805vf.png"
                 }
