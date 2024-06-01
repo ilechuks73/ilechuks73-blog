@@ -1,0 +1,24 @@
+import axios from "axios";
+
+const baseURL = process.env.NEXT_PUBLIC_BLOG_API_BASE_URL;
+
+axios.defaults.validateStatus = function () {
+  return true;
+};
+
+const api = {
+  posts: {
+    find: async function () {
+      return axios({
+        method: "GET",
+        url: `/api/posts/find`,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      });
+    },
+  },
+};
+
+export default api;

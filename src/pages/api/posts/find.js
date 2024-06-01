@@ -6,7 +6,7 @@ export default async function handler(request, response) {
   const posts = await models.post.find({});
   return response.status(200).json({
     message: "success",
-    data: posts,
+    data: { posts },
     statusCode: 200,
   });
 }
