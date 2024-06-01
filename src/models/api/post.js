@@ -22,6 +22,10 @@ const schema = new mongoose.Schema({
     type: Date,
     default: () => new Date().getTime(),
   },
+  isFeatured: {
+    type: Boolean,
+    default: false,
+  },
   image: {
     type: String,
     required: true,
