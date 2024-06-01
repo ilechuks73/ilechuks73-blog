@@ -9,6 +9,16 @@ export const config = {
 
 export default async function handler(request, response) {
   try {
+    response.setHeader("Access-Control-Allow-Credentials", "true");
+    response.setHeader("Access-Control-Allow-Origin", "*"); // replace this your actual origin
+    response.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET,DELETE,PATCH,POST,PUT,OPTIONS"
+    );
+    response.setHeader("Access-Control-Allow-Headers", "*");
+    if (request.method === "OPTIONS") {
+      return response.status(200).end();
+    }
     await utils.connectDb();
     let permalink = `https://blog.ilechuks73.com/${request.body.title.replaceAll(
       " ",
@@ -27,12 +37,12 @@ export default async function handler(request, response) {
     await models.post.create({ ...request.body });
     return response.status(200).json({
       message: "success",
-      data: {
-        posts: posts,
-      },
+      data: null,
       statusCode: "OK",
     });
   } catch (error) {
+    console.log(error.message);
+    console.log(error.stack);
     return response.status(400).json({
       message: "Unable to process this request",
       statusCode: "ERROR",
