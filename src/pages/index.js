@@ -23,9 +23,6 @@ export default function Root() {
       </Head>
       <TopSection />
       <Featured />
-      {/*<Skills />*/}
-      {/*<WorkExperience />*/}
-      {/*<Contact />*/}
       <div className={"h-[300px] w-full bg-none"}></div>
       <ViewSwitch />
     </>

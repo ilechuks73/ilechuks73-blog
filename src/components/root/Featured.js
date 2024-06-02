@@ -3,8 +3,11 @@ import { Button as MuiButton } from "@mui/material";
 import { useState, useEffect } from "react";
 import services from "@/services";
 import { EnqueueSnackbar, enqueueSnackbar } from "notistack";
+import moment from "moment";
+import { useRouter } from "next/router";
 
 export default function Featured() {
+  const router = useRouter();
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState([false]);
 
@@ -42,9 +45,28 @@ export default function Featured() {
               key={index}
               className={"border border-gray-300 rounded-md p-2"}
             >
-              <img className={"mb-5"} src={item.image} alt={"ilechuks73"} />
-              <p className={"text-md"}>{item.title}</p>
-              <p className={"text-gray-500 text-sm"}>20th January, 2024</p>
+              <div
+                className={
+                  "mb-5 h-[200px] overflow-hidden flex border border-gray-300 rounded-md flex-col justify-center"
+                }
+              >
+                <img
+                  src={item.image}
+                  alt={"ilechuks73"}
+                  className="object-fill"
+                />
+              </div>
+              <p
+                className={"text-md truncate hover:underline"}
+                onClick={() => {
+                  router.push(`/posts/${item._id}`);
+                }}
+              >
+                {item.title}
+              </p>
+              <p className={"text-gray-500 text-sm"}>
+                {moment(item.createdAt).format("LL")}
+              </p>
             </div>
           );
         })}
