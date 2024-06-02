@@ -34,7 +34,13 @@ function Post(props) {
       iframeRef.current.contentDocument ||
       iframeRef.current.contentWindow.document;
     iframeDoc.open();
-    iframeDoc.write(`<!DOCTYPE html><body>${props.post.body}</body><html>`);
+    iframeDoc.write(`<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <style>
+      /* Include your custom styles here */
+    </style>
+  </head><body>${props.post.body}</body><html>`);
     iframeDoc.close();
 
     const handleResize = () => {
