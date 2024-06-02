@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import services from "@/services";
 import { enqueueSnackbar } from "notistack";
@@ -12,6 +12,7 @@ import moment from "moment";
 function Post(props) {
   const router = useRouter();
   const [post, setPost] = useState(props.post);
+  const iframeRef = useRef(null);
 
   // useEffect(() => {
   //   async function setup() {
@@ -27,6 +28,32 @@ function Post(props) {
   //   setup();
   //   return () => {};
   // }, [router.query.id]);
+
+  useEffect(() => {
+    const iframeDoc =
+      iframeRef.current.contentDocument ||
+      iframeRef.current.contentWindow.document;
+    iframeDoc.open();
+    iframeDoc.write(props.post.body);
+    iframeDoc.close();
+
+    const handleResize = () => {
+      const iframeHeight =
+        iframeRef.current.contentWindow.document.body.scrollHeight;
+      iframeRef.current.style.height = `${iframeHeight}px`;
+      iframeRef.current.contentWindow.document.body.style.margin = 0;
+    };
+
+    iframeRef.current.onload = handleResize;
+    iframeRef.current.contentWindow.addEventListener("resize", handleResize);
+
+    return () => {
+      iframeRef.current.contentWindow.removeEventListener(
+        "resize",
+        handleResize
+      );
+    };
+  }, [props.post]);
 
   return (
     <div>
@@ -72,7 +99,11 @@ function Post(props) {
             </div>
           </div>
           <div className={"w-[100%] hidden md:block"}>
-            <div dangerouslySetInnerHTML={{ __html: post.body }} />
+            <iframe
+              ref={iframeRef}
+              style={{ width: "100%", height: "min-content", border: "none" }}
+              sandbox="allow-same-origin"
+            />
           </div>
         </div>
       </div>
