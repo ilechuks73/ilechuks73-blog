@@ -9,6 +9,7 @@ import { GoArrowUpRight } from "react-icons/go";
 import { Button as MuiButton, TextField as MuiTextField } from "@mui/material";
 import moment from "moment";
 import Link from "next/link";
+import Image from "next/image";
 
 function Post(props) {
   const router = useRouter();

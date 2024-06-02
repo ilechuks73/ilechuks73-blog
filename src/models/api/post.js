@@ -32,6 +32,11 @@ const schema = new mongoose.Schema({
     default:
       "https://res.cloudinary.com/geergregrgege/image/upload/v1717121409/assets/images/o3ysc2cvrovlldazfpap.jpg",
   },
+  summary: {
+    type: String,
+    required: true,
+    default: "No summary...",
+  },
 });
 
 const model = mongoose.models.Post || mongoose.model("Post", schema);
