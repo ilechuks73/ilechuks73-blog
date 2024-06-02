@@ -37,15 +37,17 @@ function Post(props) {
     iframeDoc.write(props.post.body);
     iframeDoc.close();
 
-    const handleResize = () => {
-      const iframeHeight =
-        iframeRef.current.contentWindow.document.body.scrollHeight;
-      iframeRef.current.style.height = `${iframeHeight}px`;
-      iframeRef.current.contentWindow.document.body.style.margin = 0;
-    };
+    setTimeout(() => {
+      const handleResize = () => {
+        const iframeHeight =
+          iframeRef.current.contentWindow.document.body.scrollHeight;
+        iframeRef.current.style.height = `${iframeHeight}px`;
+        iframeRef.current.contentWindow.document.body.style.margin = 0;
+      };
 
-    iframeRef.current.onload = handleResize;
-    iframeRef.current.contentWindow.addEventListener("resize", handleResize);
+      iframeRef.current.onload = handleResize;
+      iframeRef.current.contentWindow.addEventListener("resize", handleResize);
+    }, 500);
 
     return () => {
       iframeRef.current.contentWindow.removeEventListener(
