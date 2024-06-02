@@ -43,6 +43,7 @@ function Post(props) {
     <style>
       *{
         font-family : "Roboto", sans-serif;
+        overflow: hidden;
       }
     </style>
   </head><body>${props.post.body}</body><html>`);
