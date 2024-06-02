@@ -34,7 +34,7 @@ function Post(props) {
       iframeRef.current.contentDocument ||
       iframeRef.current.contentWindow.document;
     iframeDoc.open();
-    iframeDoc.write(`<!DOCTYPE html><body>props.post.body</body><html>`);
+    iframeDoc.write(`<!DOCTYPE html><body>${props.post.body}</body><html>`);
     iframeDoc.close();
 
     const handleResize = () => {
