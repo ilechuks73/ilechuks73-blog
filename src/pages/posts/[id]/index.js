@@ -71,7 +71,7 @@ function Post(props) {
               </p>
             </div>
           </div>
-          <div className={"w-[100%] md:w-[40%] hidden md:block"}>
+          <div className={"w-[100%] hidden md:block"}>
             <div dangerouslySetInnerHTML={{ __html: post.body }} />
           </div>
         </div>
