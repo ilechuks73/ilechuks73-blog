@@ -98,11 +98,10 @@ function Post(props) {
               </p>
             </div>
           </div>
-          <div className={"w-[100%] hidden md:block"}>
+          <div className={"w-[100%]"}>
             <iframe
               ref={iframeRef}
               style={{ width: "100%", height: "min-content", border: "none" }}
-              sandbox="allow-same-origin"
             />
           </div>
         </div>
