@@ -101,7 +101,7 @@ function Post(props) {
           <div className={"w-[100%]"}>
             <iframe
               ref={iframeRef}
-              style={{ width: "100%", height: "min-content", border: "none" }}
+              style={{ width: "100%", height: "5000px", border: "none" }}
             />
           </div>
         </div>
