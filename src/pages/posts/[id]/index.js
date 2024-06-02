@@ -34,7 +34,7 @@ function Post(props) {
       iframeRef.current.contentDocument ||
       iframeRef.current.contentWindow.document;
     iframeDoc.open();
-    iframeDoc.write(props.post.body);
+    iframeDoc.write(`<!DOCTYPE html><body>props.post.body</body><html>`);
     iframeDoc.close();
 
     setTimeout(() => {
@@ -101,10 +101,7 @@ function Post(props) {
             </div>
           </div>
           <div className={"w-[100%]"}>
-            <iframe
-              ref={iframeRef}
-              style={{ width: "100%", border: "none" }}
-            />
+            <iframe ref={iframeRef} style={{ width: "100%", border: "none" }} />
           </div>
         </div>
       </div>
