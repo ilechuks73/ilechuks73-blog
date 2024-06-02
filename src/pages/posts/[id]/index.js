@@ -8,6 +8,7 @@ import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { GoArrowUpRight } from "react-icons/go";
 import { Button as MuiButton, TextField as MuiTextField } from "@mui/material";
 import moment from "moment";
+import Link from "next/link";
 
 function Post(props) {
   const router = useRouter();
@@ -43,7 +44,18 @@ function Post(props) {
     <style>
       *{
         font-family : "Roboto", sans-serif;
+         
+      }
+      html{
         overflow: hidden;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+      }
+      img {
+        max-width: 100%;
       }
     </style>
   </head><body>${props.post.body}</body><html>`);
@@ -53,7 +65,6 @@ function Post(props) {
       const iframeHeight =
         iframeRef.current.contentWindow.document.body.scrollHeight;
       iframeRef.current.style.height = `${iframeHeight + 100}px`;
-      iframeRef.current.contentWindow.document.body.style.margin = 0;
     };
 
     iframeRef.current.onload = handleResize;
@@ -76,13 +87,15 @@ function Post(props) {
       <div className={""}>
         <div className={"font-roboto max-w-[1000px] mx-4 md:mx-10 lg:mx-auto"}>
           <div className={"flex justify-between items-center py-3"}>
-            <img
-              alt={"ilechuks73"}
-              className={"h-[30px] md:h-[50px] cursor-pointer"}
-              src={
-                "https://res.cloudinary.com/geergregrgege/image/upload/v1716754334/assets/images/xsp4qwpdyc0j0s2805vf.png"
-              }
-            />
+            <Link href="/">
+              <img
+                alt={"ilechuks73"}
+                className={"h-[30px] md:h-[50px] cursor-pointer"}
+                src={
+                  "https://res.cloudinary.com/geergregrgege/image/upload/v1716754334/assets/images/xsp4qwpdyc0j0s2805vf.png"
+                }
+              />
+            </Link>
             <div className={"flex"}>
               <MuiButton
                 endIcon={<GoArrowUpRight className={"font-light"} />}
@@ -109,6 +122,9 @@ function Post(props) {
                 {moment(post.createdAt).format("LL")}
               </p>
             </div>
+          </div>
+          <div>
+            <img src={post.image} className="w-full" />
           </div>
           <div className={"w-[100%]"}>
             <iframe ref={iframeRef} style={{ width: "100%", border: "none" }} />
